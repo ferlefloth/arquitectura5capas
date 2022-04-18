@@ -16,7 +16,7 @@ app.listen('3000', () => {
     console.log('Server is running succesfully! :D ')
 });
 
-mongoose.connect('<<<URL DEL CLUSTER DE MONGO>>>', { useNewUrlParser: true, useUnifiedTopology: true },()=>{
+mongoose.connect('mongodb+srv://mello:123@cluster0.r7qsm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },()=>{
 
     console.log('DatabaseConnected')
     
