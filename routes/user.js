@@ -20,9 +20,10 @@ router.get('/home', (req, res) => {
 //1. Generate a salt -> random text
 //2. Hash a password -> hash(123456789, salt)
 
-router.get('/token',(req,res)=>{
-    const token = jwt.sign({_id: 123123}, process.env.SECRET);
+router.get('/token',(req,res,next)=>{
+    const token = jwt.sign({_id: 123}, process.env.SECRET);
     res.send(token) // te devuelve el token como tal conocemos
+    next()
 })
 
 
