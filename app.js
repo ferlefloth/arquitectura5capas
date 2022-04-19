@@ -2,7 +2,7 @@ const express = require('express') ;
 const mongoose = require('mongoose') ;
 const dotenv = require('dotenv'); 
 const userRoutes = require('./routes/user.js') 
-const authRoutes = require( './routes/auth.js');
+const routes = require('./routes/index.js')
 
 const createApp = ()=>{
     const app = express();
@@ -13,8 +13,8 @@ const createApp = ()=>{
     })
 
     //routes
-    app.use('/api/', userRoutes) // se puede usar como app.use('/api/', userRoutes) --->localhost:3000/api/home; Se puede usar muchas rutas para distintas funcionalidades
-    app.use('/api/auth', authRoutes);
+    app.use('/api', routes.api) // se puede usar como app.use('/api/', userRoutes) --->localhost:3000/api/home; Se puede usar muchas rutas para distintas funcionalidades
+   // app.use('/api/auth', authRoutes);
     
     return app
 }
