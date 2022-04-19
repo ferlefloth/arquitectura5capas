@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require('express') ;
 const router = express.Router();
-const UserModel = require('../models/User');
-const { send } = require('express/lib/response');
-const bcrypt = require('bcrypt');
-const jwt= require('jsonwebtoken');
-const verifyToken = require('./verifyjwt')
+const UserModel = require('../models/User') ;
+const { send } = require('express/lib/response') ;
+const bcrypt = require('bcrypt') ;
+const jwt = require('jsonwebtoken');
+const verifyToken = require('./verifyjwt') 
 
 
 

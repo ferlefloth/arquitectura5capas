@@ -1,24 +1,21 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const env = require('dotenv')
-app.use(express.json())
+const express = require('express') ;
+const mongoose = require('mongoose') ;
+const dotenv = require('dotenv'); 
+const userRoutes = require('./routes/user.js') 
+const authRoutes = require( './routes/auth.js');
 
-
-const userRoutes = require('./routes/user');
-app.use('/api/', userRoutes) // se puede usar como app.use('/api/', userRoutes) --->localhost:3000/api/home; Se puede usar muchas rutas para distintas funcionalidades
-
-const authRoutes = require('./routes/auth');
-app.use('/api/auth', authRoutes);
-
-//creating a server 
-app.listen('3000', () => {
-    console.log('Server is running succesfully! :D ')
-});
-
-
-mongoose.connect('mongodb+srv://mello:pass@cluster0.r7qsm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },()=>{
-
-    console.log('DatabaseConnected')
+const createApp = ()=>{
+    const app = express();
+    app.use(express.json())
     
-}) //put pass, project: myFirstDatabase
+    mongoose.connect('mongodb+srv://mello:123@cluster0.r7qsm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true },()=>{
+        console.log('DatabaseConnected')
+    })
+
+    //routes
+    app.use('/api/', userRoutes) // se puede usar como app.use('/api/', userRoutes) --->localhost:3000/api/home; Se puede usar muchas rutas para distintas funcionalidades
+    app.use('/api/auth', authRoutes);
+    
+    return app
+}
+module.exports = createApp;
